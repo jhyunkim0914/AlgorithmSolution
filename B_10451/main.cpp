@@ -22,7 +22,7 @@ int findCycle(int start)
 
 int main()
 {
-	freopen("input.txt", "r", stdin);
+	//freopen("input.txt", "r", stdin);
 	cin >> T;
 	for (int test = 0; test < T; test++)
 	{

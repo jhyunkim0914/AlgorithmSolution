@@ -1,4 +1,5 @@
-﻿#include <iostream>
+#include <iostream>
+#include <cstdio>
 #include <queue>
 
 using namespace std;
@@ -40,6 +41,8 @@ void bfs(int start) {
 
 int main()
 {
+	freopen("input.txt", "r", stdin);
+	
 	cin >> v >> e >> start;
 
 	for (int i = 0; i < 1001; i++) {

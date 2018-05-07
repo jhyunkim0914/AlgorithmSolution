@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
+#include <cstdio>
 #include <queue>
 #include <vector>
 
@@ -10,7 +11,7 @@ typedef struct NODE {
 	vector<int>* co_node_vec;
 }NODE;
 
-// ³ëµå ¹è¿­°ú ¹æ¹®ÇÑ °÷ÀÇ ¼ıÀÚ¸¦ ³Ö´Â´Ù. 
+// ë…¸ë“œ ë°°ì—´ê³¼ ë°©ë¬¸í•œ ê³³ì˜ ìˆ«ìë¥¼ ë„£ëŠ”ë‹¤. 
 NODE** node_arr;
 int* visited;
 queue<int> networkQueue;
@@ -19,7 +20,7 @@ int answer = -1;
 int bfs() {
 	networkQueue.push(1);
 	while (networkQueue.size()) {
-		// queue ¿¡ ÀÖ´Â ¿ø¼Ò¸¦ ÇÏ³ª »©°í ³ª¼­ visited ¸¦ 1·Î º¯°æ 
+		// queue ì— ìˆëŠ” ì›ì†Œë¥¼ í•˜ë‚˜ ë¹¼ê³  ë‚˜ì„œ visited ë¥¼ 1ë¡œ ë³€ê²½ 
 		int sub_node = networkQueue.front();
 		networkQueue.pop();
 
@@ -27,7 +28,7 @@ int bfs() {
 		visited[sub_node] = 1;
 		answer++;
 
-		// »« ³ëµå¿ÍÀÇ °ü°è¸¦ »ìÆìº¸°í, ¿¬°áµÈ ³ëµåµéÀ» Ãß°¡ÇÑ´Ù. 
+		// ëº€ ë…¸ë“œì™€ì˜ ê´€ê³„ë¥¼ ì‚´í´ë³´ê³ , ì—°ê²°ëœ ë…¸ë“œë“¤ì„ ì¶”ê°€í•œë‹¤. 
 		for (int i = 0; i < node_arr[sub_node]->co_node_vec->size(); i++) {
 			networkQueue.push(node_arr[sub_node]->co_node_vec->at(i));
 		}
@@ -43,7 +44,7 @@ int main()
 	int total_node_num, relation_num;
 	cin >> total_node_num >> relation_num;
 
-	// ³ëµå »ı¼º _ 0¹øÀº »ç¿ëÇÏÁö ¾Ê´Â´Ù. 
+	// ë…¸ë“œ ìƒì„± _ 0ë²ˆì€ ì‚¬ìš©í•˜ì§€ ì•ŠëŠ”ë‹¤. 
 	node_arr = (NODE**)malloc(sizeof(NODE*)*(total_node_num + 1));
 	visited = (int*)malloc(sizeof(int)*(total_node_num + 1));
 	for (int i = 1; i <= total_node_num; i++) {
@@ -52,7 +53,7 @@ int main()
 		visited[i] = 0;
 	}
 
-	// °ü°è Çü¼º 
+	// ê´€ê³„ í˜•ì„± 
 	int sub_node_1, sub_node_2;
 	for (int i = 0; i < relation_num; i++) {
 		cin >> sub_node_1 >> sub_node_2;
